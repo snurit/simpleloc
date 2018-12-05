@@ -1,0 +1,43 @@
+{% extends 'gestion/base.html' %}
+
+{% block content %}
+{% if apts %}
+    <table>
+        <thead>
+            <tr>
+                <th>Ref</th>
+                <th>Bâtiment</th>
+                <th>Num.</th>
+                <th>Capacité</th>
+                <th>Etage</th>
+                <th>Type</th>
+                <th>Réservable</th>
+                <th colspan="3">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for apt in apts %}
+            <tr>
+                <td>{{ apt.reference }}</td>
+                <td>{{ apt.building }}</td>
+                <td>{{ apt.number }}</td>
+                <td>{{ apt.capacity }} pers.</td>
+                <td>{{ apt.floor }}</td>
+                <td>{{ apt.numRooms }}</td>
+                <td>{{ apt.isOpen }}</td>
+                <td>Edit</td>
+                <td>Lock</td>
+                <td>Delete</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Au total {{ nbApts }} appartements</td>
+            </tr>
+        </tfoot>
+    </table>
+{% else %}
+    <p>Aucun appartement à afficher</p>
+{% endif %}
+{% endblock content %}
